@@ -1,0 +1,46 @@
+# WebRTC Video Conferencing Backend Dependencies
+# Core Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# WebSocket Support
+websockets==12.0
+
+# Audio Processing and ML Models
+openai-whisper==20231117
+transformers==4.35.2
+sentencepiece==0.1.99
+torch==2.1.1
+torchaudio==2.1.1
+
+# Speaker Diarization
+pyannote.audio==3.1.1
+
+# Audio Processing Utilities
+ffmpeg-python==0.2.0
+librosa==0.10.1
+soundfile==0.12.1
+numpy==1.24.3
+pydub==0.25.1
+
+# Timestamp Alignment
+stable-whisper==3.2.0
+
+# Utilities
+python-dotenv==1.0.0
+pydantic==2.5.0
+aiofiles==23.2.1
+
+# Development and Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2
+
+# Evaluation Metrics
+jiwer==3.0.3
+sacrebleu==3.0.0
+
+# Optional: For enhanced performance (uncomment if needed)
+# accelerate==0.24.1
+# optimum==1.15.0
