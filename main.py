@@ -16,7 +16,7 @@ from collections import defaultdict
 
 # Import application modules
 from api.routes import router as api_router
-from api.websockets import ConnectionManager
+from api.websockets import connection_manager
 from asr.whisper_asr import model as whisper_model
 from translation.nllb_translation import warm_up_models
 from utils.logger import setup_logging
@@ -24,9 +24,6 @@ from utils.logger import setup_logging
 # Configure logging
 setup_logging()
 logger = logging.getLogger(__name__)
-
-# Global state for WebSocket connections
-connection_manager = ConnectionManager()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
