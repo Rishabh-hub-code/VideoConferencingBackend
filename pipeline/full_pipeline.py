@@ -1,10 +1,27 @@
+"""
+Full Pipeline Processing: Diarization -> ASR -> Translation -> Alignment
+"""
+
+import logging
+import os
+import tempfile
+from typing import List, Dict, Optional, Any
+
+# Import application modules
 from diarization.pyannote_diarization import diarize_audio_file
 from asr.whisper_asr import transcribe_audio_file
 from pipeline.segment_utils import standardize_audio
 from translation.nllb_translation import translate_text
-from pydub import AudioSegment
-import tempfile
-import os
+from alignment.stable_ts import transcribe_with_timestamps
+
+logger = logging.getLogger(__name__)
+
+try:
+    from pydub import AudioSegment
+    PYDUB_AVAILABLE = True
+except ImportError:
+    PYDUB_AVAILABLE = False
+    logger.warning("pydub not available - some audio processing features may be limited")
 
 def crop_audio_segment(audio_bytes, start_sec, end_sec, file_extension="wav"):
     with tempfile.NamedTemporaryFile(delete=False, suffix=f".{file_extension}") as tmp_in:
